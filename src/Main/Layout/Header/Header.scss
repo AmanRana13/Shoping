@@ -1,0 +1,67 @@
+@use "../../Assets/constant/mixins.scss";
+
+.header_main_container {
+    .header_wapper_container {
+        padding: 15px 0;
+
+        .header_top_container {
+            padding: 0 35px;
+            display: grid;
+            grid-template-columns: auto auto;
+            align-items: center;
+            grid-column-gap: 20px;
+            overflow-wrap: anywhere;
+
+            .header_top_container_left {
+                @include mixins.center(flex, null);
+
+                .header_logo {
+                    @include mixins.center();
+                    padding-right: 10px;
+                    margin-bottom: 10px;
+
+                    li {
+                        height: 70.5px;
+                        width: 150px;
+                    }
+                }
+
+                .header_everything {
+                    @include mixins.center();
+                    padding-left: 10px;
+
+                    li {
+                        padding: 0 1em;
+                        line-height: 50px
+                    }
+                }
+            }
+
+            .header_top_container_right {
+                @include mixins.center(flex, end);
+
+                .header_about {
+                    padding-left: 10px;
+
+                    li {
+                        padding: 0 1em;
+                        line-height: 50px
+                    }
+
+                    @include mixins.center()
+                }
+
+                .header_price {
+                    padding-left: 10px;
+
+                    li {
+                        padding: 0 1em;
+                        line-height: 50px
+                    }
+
+                    @include mixins.center()
+                }
+            }
+        }
+    }
+}

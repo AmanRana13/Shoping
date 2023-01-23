@@ -1,0 +1,13 @@
+@use "../../Assets/constant/color";
+
+.navBar_items {
+    text-decoration: none;
+    list-style: none;
+
+    a {
+        text-decoration: none;
+        color: color.$textColor;
+        line-height: 16px;
+        font-size: 16px;
+    }
+}

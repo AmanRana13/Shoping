@@ -1,0 +1,10 @@
+// for make the div center
+
+@mixin center($d: flex, $jc: center, $ai: center) {
+    display: $d;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+
+// for padding 
