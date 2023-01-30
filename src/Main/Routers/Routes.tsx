@@ -1,4 +1,5 @@
 import { lazy, useEffect, useState } from "react";
+
 import PrivateRoutes from "./Private";
 import PublicRoutes from "./Public";
 
@@ -17,7 +18,7 @@ const Routers = () => {
     }, [login, reducerValue, token])
 
     return (
-        Auth ?
+        true ?
             <PrivateRoutes /> : <PublicRoutes />
     )
 }
