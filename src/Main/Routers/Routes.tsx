@@ -1,11 +1,8 @@
 import { lazy, useEffect, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import PrivateRoutes from "./Private";
+import PublicRoutes from "./Public";
 
-const Home = lazy(() => import("../Screens/Home/index"))
-const OurMenu = lazy(() => import("../Screens/OurMenu/index"))
-const Outlets = lazy(() => import("../Layout/index"))
-
-const token = "123456"
+const token = localStorage.getItem("token")
 
 const Routers = () => {
 
@@ -15,27 +12,13 @@ const Routers = () => {
 
     useEffect(() => {
 
-        if (token !== null && login === reducerValue) {
-            setAuth(true)
-        }
+        (token !== null && login === reducerValue) ? setAuth(true) : setAuth(false)
 
-    }, [login, reducerValue])
+    }, [login, reducerValue, token])
 
     return (
-        <>
-            {Auth ?
-                <Routes>
-                    <Route path="/" element={<Outlets />}>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/ourmenu" element={<OurMenu />} />
-                    </Route>
-                </Routes>
-                :
-                <Routes>
-                    <Route path="*" element={<Navigate to="/login" />} />
-                </Routes>
-            }
-        </>
+        Auth ?
+            <PrivateRoutes /> : <PublicRoutes />
     )
 }
 

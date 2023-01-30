@@ -1,19 +1,25 @@
-import "./ListItem.scss"
+import "./ListItem.scss";
 
 type props = {
-    path?: string;
-    item: any;
-    onclick?: any;
-}
+  path?: string;
+  item?: any;
+  onclick?: () => void;
+};
 
 const ListItem = ({ item, path, onclick = () => { } }: props) => {
-    return (
-        <>
-            <li onClick={onclick} className='navBar_items'>
-                <a href={path} >{item}</a>
-            </li>
-        </>
-    )
-}
 
-export default ListItem
+  const pathValue = () => path === "false" ? false : path ? path : item.toLowerCase()
+
+  return (
+    <>
+      <li onClick={onclick} className="navBar_items">
+        <a href={pathValue()}>{item}</a>
+      </li>
+    </>
+  );
+};
+
+export default ListItem;
+
+
+

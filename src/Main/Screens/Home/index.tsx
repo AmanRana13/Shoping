@@ -1,11 +1,26 @@
-import React from 'react'
+import React from "react"
+import Tooltip from "../../Components/ToolTip"
+import Image from "../../Components/Image"
+import Images from "../../Assets/Images"
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
-    <div>
-      HOME
-    </div>
+    <article>
+      <div style={{ height: "50px" }}></div>
+      <Tooltip title={
+        <>
+          <Image src={Images.logo} />
+          <p>hello aman </p>
+        </>
+      }>
+        <button>
+          submit
+        </button>
+      </Tooltip>
+
+    </article>
   )
 }
 
 export default Home
+

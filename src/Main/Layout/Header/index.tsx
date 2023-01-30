@@ -4,6 +4,7 @@ import ListItem from '../../Components/ListItem'
 import Image from "../../Components/Image"
 
 import Images from "../../Assets/Images"
+import Icons from "../../Components/Icons/Icons"
 
 
 function Header() {
@@ -29,8 +30,11 @@ function Header() {
                             <ListItem item={'Contact'} />
                         </ul>
                         <ul className="header_price">
-                            <ListItem item={'Price'} />
-                            <ListItem item={'Contact'} />
+                            <ListItem item={"0.00"} path={"false"} />
+                            {/* <ListItem path={'basket'} item={<Image src={Images.basket} />} /> */}
+                        </ul>
+                        <ul className="header_profile">
+                            <ListItem path={'contact'} item={<Icons id={"profile"} title="pofile" height={30} width={30} />} />
                         </ul>
                     </div>
 
