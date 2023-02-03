@@ -1,54 +1,49 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import "./Tooltip.scss";
 
-
 interface Props {
-    title?: React.ReactNode,
-    children: React.ReactNode
+  title?: React.ReactNode | any;
+  children: React.ReactNode;
 }
 
-const Tooltip: React.FC<{ children: React.ReactNode, title: React.ReactNode }> = ({ children, title }: Props) => {
-    const [visible, setVisible] = useState(false)
+const Tooltip = ({ children, title }: Props) => {
+  const as = title;
 
-    const TooltipItemCoord = () => {
-        let tooltip = document.getElementById("tooltip_data")
-        if (tooltip) {
-            let coords = tooltip.getBoundingClientRect();
-            return coords
-        }
-    }
+  const [toggle, setToggle] = useState<boolean>(false);
+  const CreateDiv = document.createElement("div");
+  CreateDiv.setAttribute("id", "tooltip");
 
-    function onHover(e: any) {
-        try {
-            const coords = TooltipItemCoord()
-            if (coords) {
-                let show = e.clientX >= coords.left && e.clientX <= coords.right && e.clientY <= coords.bottom && e.clientY >= coords.top
-                show ? setVisible(!visible) : setVisible(false)
-            }
-        }
-        catch (e) { }
-    }
-    
-    useEffect(() => {
-        document.addEventListener("mousedown", onHover)
-    }, [])
+  // useEffect(() => {
+  //   showTooltip(toggle);
+  // }, [toggle]);
 
-    return (
-        <div id="toolTip_container" className="tooltip_container">
-            <span id="tooltip_data" className="tooltip_Inner_container">
-                <div className="tooltip_data">
-                    {children}
-                </div>
-                {visible && <div className="tooltip_main_container">
-                    <div className="tooltip_arrow" />
-                    <div className="tooltip_body">
-                        {title}
-                    </div>
-                </div>}
-            </span>
-        </div>
-    )
-}
+  const showTooltip = (show: boolean) => {
+    console.log(":::::::::::::::::::::", show ? "show" : "hide");
+    const tooltip = document.getElementById("tooltip");
 
-export default Tooltip
+    tooltip
+      ? tooltip.setAttribute("class", show ? "visibel" : "hide")
+      : document.body.appendChild(CreateDiv);
+  };
+
+  return (
+    <>
+      <span
+        id="tooltip_data"
+        className="tooltip_data"
+        onClick={() => {
+          showTooltip(!toggle);
+          setToggle(!toggle);
+        }}
+        // onMouseLeave={() => showTooltip(false)}
+        // onBlur={() => showTooltip(false)}
+      >
+        {children}
+      </span>
+      {console.log(title)}
+      {createPortal(as, CreateDiv, "asd")}
+    </>
+  );
+};
+export default Tooltip;

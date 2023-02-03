@@ -1,33 +1,32 @@
+.tooltip_data {
+    height: inherit;
+    width: inherit;
+}
+
 .tooltip_container {
+    width: fit-content;
+    height: fit-content;
 
-
-    .tooltip_Inner_container {
-        position: relative;
-
-        .tooltip_main_container {
-            width: max-content;
-            position: absolute;
-
-            .tooltip_arrow {
-                width: 0;
-                height: 0;
-                border-left: 10px solid rgb(0 0 0 / 0%);
-                border-right: 10px solid rgb(0 0 0 / 0%);
-                border-bottom: 10px solid rgb(192, 128, 128);
-            }
-
-            .tooltip_body {
-                border: 1px solid rgb(0 0 0);
-                box-shadow: 1px 0px 6px 1px #b0abab;
-                padding: 5px;
-            }
-        }
-
-        .tooltip_data {
-            height: inherit;
-            width: inherit;
-        }
+    .tooltip_arrow {
+        width: 0;
+        height: 0;
+        border-left: 10px solid rgba(0, 0, 0, 0);
+        border-right: 10px solid rgba(0, 0, 0, 0);
+        border-bottom: 10px solid rgb(192, 128, 128);
+        position: absolute;
     }
 
+    .tooltip_body {
+        box-shadow: 1px 0px 6px 1px #b0abab;
+        padding: 10px;
+        border-radius: 5px;
+    }
+}
 
+.visibel {
+    display: block;
+}
+
+.hide {
+    display: none;
 }
