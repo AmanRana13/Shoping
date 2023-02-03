@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PrivateRoutes from "./Private";
 import PublicRoutes from "./Public";
 
@@ -13,7 +13,7 @@ const Routers = () => {
     token !== null && login === reducerValue ? setAuth(true) : setAuth(false);
   }, [login, reducerValue, token]);
 
-  return true ? <PrivateRoutes /> : <PublicRoutes />;
+  return Auth ? <PrivateRoutes /> : <PublicRoutes />;
 };
 
 export default Routers;
